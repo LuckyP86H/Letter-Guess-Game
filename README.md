@@ -1,21 +1,20 @@
 # Psychic Game (Basic)
 
-## Instructions:
+**Instructions:**
 
-**The guest user pick up a letter for matching the one that computer generate. Here are some data log while playing:**
+1. The guest user pick up a letter for matching the one that computer generate. Here are some data log while playing:
 
-+  You currently choose: (the letter that the user currently pressed)
+  * You currently choose: (the letter that the user currently pressed)
+    - Wins: (# of times the user has guessed the letter correctly)
+    
+    - Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
 
-+  Wins: (# of times the user has guessed the letter correctly)
+  * Guesses Left: (# of guesses left. This will update)
+  
+  * Your Guesses So Far: (the list of letters that the user typed. Display these until the user either wins or loses.)
 
-+  Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+2. Note: 
 
-+  Guesses Left: (# of guesses left. This will update)
+  * When the player wins, increase the Wins counter and start the game over again (without refreshing the page). 
 
-+  Your Guesses So Far: (the list of letters that the user typed. Display these until the user either wins or loses.)
-
-## Note: 
-
-+  When the player wins, increase the Wins counter and start the game over again (without refreshing the page). 
-
-+  When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
+  *  When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
