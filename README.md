@@ -1,5 +1,5 @@
-# Word-Guess-Game
-My 3rd HTML project: Guess Letter Game
+# LetterGuessGame
+
 
 # Description: 
 
