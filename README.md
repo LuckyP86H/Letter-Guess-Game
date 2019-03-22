@@ -1,17 +1,18 @@
 # Psychic Game (Basic)
 
+## Instructions:
 
-## The guest user pick up a letter for matching the one that computer generate. Here are some data log while playing:
+**The guest user pick up a letter for matching the one that computer generate. Here are some data log while playing:**
 
-*  You currently choose: (the letter that the user currently pressed)
++  You currently choose: (the letter that the user currently pressed)
 
-*  Wins: (# of times the user has guessed the letter correctly)
++  Wins: (# of times the user has guessed the letter correctly)
 
-*  Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
++  Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
 
-*  Guesses Left: (# of guesses left. This will update)
++  Guesses Left: (# of guesses left. This will update)
 
-*  Your Guesses So Far: (the list of letters that the user typed. Display these until the user either wins or loses.)
++  Your Guesses So Far: (the list of letters that the user typed. Display these until the user either wins or loses.)
 
 ## Note: 
 
