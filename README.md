@@ -8,12 +8,21 @@ A letter-guessing game. The computer picks a letter, and you guess it in five tr
 - **Daily:** one letter per UTC day, the same for everyone, with a shareable result grid.
 - **Friends rooms:** create a room and share the code. The server picks each round's letter, so nobody can peek. First to five round wins takes the match.
 - **Accounts:** sign in with GitHub or Google to keep your history on every device. No passwords are stored.
-- **Works offline-first for guests:** history stays in your browser until you sign in.
+- **Guests:** history stays in your browser. Sign in to keep it on every device.
 - Keyboard and on-screen controls, phone-friendly layout, light and dark themes, and reduced-motion support.
+
+## Play with friends in 30 seconds
+
+![Two players in a room: one joins with the code, the host starts, and both guess until the round ends](docs/room-demo.gif)
+
+1. Open **Friends** and click **Create room**.
+2. Send the link (or the 6-letter code) to your friends.
+3. Everyone enters a name and joins. The host clicks **Start match** once two people are in.
+4. Type letters. The first correct letter wins the round. You have five lives each. First to five round wins takes the match.
 
 ## Getting started
 
-Requirements: [Bun](https://bun.sh) 1.4+ and Node 24 or later.
+Requirements: [Bun](https://bun.sh) 1.4+ and Node 26 (the version in `.nvmrc`; 24 or later also works).
 
 ```sh
 bun install

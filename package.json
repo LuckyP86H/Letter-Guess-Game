@@ -12,7 +12,6 @@
     "lint": "oxlint --deny-warnings && oxfmt --check",
     "format": "oxfmt",
     "test": "bun test src",
-    "e2e": "playwright test",
     "deploy": "vite build && wrangler deploy",
     "db:migrate:local": "wrangler d1 migrations apply DB --local"
   },
@@ -24,7 +23,6 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.66.0",
-    "@playwright/test": "^1.64.1",
     "@types/bun": "^1.4.4",
     "oxfmt": "^0.75.0",
     "oxlint": "^1.90.0",
