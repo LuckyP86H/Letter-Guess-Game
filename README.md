@@ -1,26 +1,46 @@
-# Psychic Game (Basic)
+# Letter Guess
 
+A letter-guessing game. The computer picks a letter, and you guess it in five tries. Play alone, take the daily letter with everyone, or race friends in a room.
 
-## Instructions:
+## What's included
 
-1. The guest user pick up a letter for matching the one that computer generate. Here are some data log while playing:
+- **Solo:** endless rounds with streaks and guesses-to-win stats.
+- **Daily:** one letter per UTC day, the same for everyone, with a shareable result grid.
+- **Friends rooms:** create a room and share the code. The server picks each round's letter, so nobody can peek. First to five round wins takes the match.
+- **Accounts:** sign in with GitHub or Google to keep your history on every device. No passwords are stored.
+- **Works offline-first for guests:** history stays in your browser until you sign in.
+- Keyboard and on-screen controls, phone-friendly layout, light and dark themes, and reduced-motion support.
 
-  * You currently choose: (the letter that the user currently pressed)
-    - Wins: (# of times the user has guessed the letter correctly)
-    
-    - Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+## Getting started
 
-  * Guesses Left: (# of guesses left. This will update)
-  
-  * Your Guesses So Far: (the list of letters that the user typed. Display these until the user either wins or loses.)
+Requirements: [Bun](https://bun.sh) 1.4+ and Node 24 or later.
 
+```sh
+bun install
+bun run db:migrate:local   # create the local D1 database
+bun run dev                # the app runs at http://localhost:5173
+```
 
-## Notes: 
+To try sign-in locally, copy `.dev.vars.example` to `.dev.vars` and add a GitHub or Google OAuth client. Each provider needs the callback `http://localhost:5173/api/auth/<provider>/callback`. Sign-in buttons appear only for providers that have credentials.
 
-  * When the player wins, increase the Wins counter and start the game over again (without refreshing the page). 
+Other commands:
 
-  *  When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
+```sh
+bun test src          # game rules and room logic
+bun run typecheck
+bun run lint
+bun run build
+```
 
+## Deploying
 
-____________________
-<sub> &copy; Paul Xu at Univerversity of Toronto School of Continuing Studies Coding Boot Camp in March 2019 </sub>
+The app runs as one Cloudflare Worker with a D1 database and a Durable Object for rooms. The free plan covers all of it.
+
+1. Create a D1 database and put its ID in `wrangler.jsonc`.
+2. Apply the migrations: `bunx wrangler d1 migrations apply letter-guess-game --remote`.
+3. Add the OAuth secrets: `bunx wrangler secret put GITHUB_CLIENT_ID`, and the same for `GITHUB_CLIENT_SECRET`, `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+4. Deploy: `bun run deploy`.
+
+Each provider's OAuth app needs the production callback, `https://<your-worker>/api/auth/<provider>/callback`.
+
+See [docs/DESIGN.md](docs/DESIGN.md) for how the pieces fit together.
