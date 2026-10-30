@@ -1,26 +1,55 @@
-# Psychic Game (Basic)
+# Letter Guess
 
+A letter-guessing game. The computer picks a letter, and you guess it in five tries. Play alone, take the daily letter with everyone, or race friends in a room.
 
-## Instructions:
+## What's included
 
-1. The guest user pick up a letter for matching the one that computer generate. Here are some data log while playing:
+- **Solo:** endless rounds with streaks and guesses-to-win stats.
+- **Daily:** one letter per UTC day, the same for everyone, with a shareable result grid.
+- **Friends rooms:** create a room and share the code. The server picks each round's letter, so nobody can peek. First to five round wins takes the match.
+- **Accounts:** sign in with GitHub or Google to keep your history on every device. No passwords are stored.
+- **Guests:** history stays in your browser. Sign in to keep it on every device.
+- Keyboard and on-screen controls, phone-friendly layout, light and dark themes, and reduced-motion support.
 
-  * You currently choose: (the letter that the user currently pressed)
-    - Wins: (# of times the user has guessed the letter correctly)
-    
-    - Losses: (# of times the user has failed to guess the letter correctly after exhausting all guesses)
+## Play with friends in 30 seconds
 
-  * Guesses Left: (# of guesses left. This will update)
-  
-  * Your Guesses So Far: (the list of letters that the user typed. Display these until the user either wins or loses.)
+![Two players in a room: one joins with the code, the host starts, and both guess until the round ends](docs/room-demo.gif)
 
+1. Open **Friends** and click **Create room**.
+2. Send the link (or the 6-letter code) to your friends.
+3. Everyone enters a name and joins. The host clicks **Start match** once two people are in.
+4. Type letters. The first correct letter wins the round. You have five lives each. First to five round wins takes the match.
 
-## Notes: 
+## Getting started
 
-  * When the player wins, increase the Wins counter and start the game over again (without refreshing the page). 
+Requirements: [Bun](https://bun.sh) 1.4+ and Node 26 (the version in `.nvmrc`; 24 or later also works).
 
-  *  When the player loses, increase the Losses counter and restart the game without a page refresh (just like when the user wins).
+```sh
+bun install
+bun run db:migrate:local   # create the local D1 database
+bun run dev                # the app runs at http://localhost:5173
+```
 
+To try sign-in locally, copy `.dev.vars.example` to `.dev.vars` and add a GitHub or Google OAuth client. Each provider needs the callback `http://localhost:5173/api/auth/<provider>/callback`. Sign-in buttons appear only for providers that have credentials.
 
-____________________
-<sub> &copy; Paul Xu at Univerversity of Toronto School of Continuing Studies Coding Boot Camp in March 2019 </sub>
+Other commands:
+
+```sh
+bun test src          # game rules and room logic
+bun run typecheck
+bun run lint
+bun run build
+```
+
+## Deploying
+
+The app runs as one Cloudflare Worker with a D1 database and a Durable Object for rooms. The free plan covers all of it.
+
+1. Create a D1 database and put its ID in `wrangler.jsonc`.
+2. Apply the migrations: `bunx wrangler d1 migrations apply letter-guess-game --remote`.
+3. Add the OAuth secrets: `bunx wrangler secret put GITHUB_CLIENT_ID`, and the same for `GITHUB_CLIENT_SECRET`, `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+4. Deploy: `bun run deploy`.
+
+Each provider's OAuth app needs the production callback, `https://<your-worker>/api/auth/<provider>/callback`.
+
+See [docs/DESIGN.md](docs/DESIGN.md) for how the pieces fit together.
