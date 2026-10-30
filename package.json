@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "description": "A letter-guessing game: solo, daily, and friends rooms, with GitHub and Google sign-in",
+  "author": "Paul Xu",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
