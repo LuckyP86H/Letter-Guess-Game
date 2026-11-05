@@ -17,19 +17,19 @@
   },
   "dependencies": {
     "arctic": "^3.7.0",
-    "hono": "^4.13.14",
-    "solid-js": "^1.9.17",
+    "hono": "^4.13.16",
+    "solid-js": "^1.9.18",
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.66.0",
+    "@cloudflare/vite-plugin": "^1.67.0",
     "@types/bun": "^1.4.4",
     "oxfmt": "^0.75.0",
     "oxlint": "^1.90.0",
     "typescript": "~6.0.3",
     "vite": "^8",
-    "vite-plugin-solid": "^2.11.14",
-    "wrangler": "^4.155.0"
+    "vite-plugin-solid": "^2.11.15",
+    "wrangler": "^4.156.2"
   },
   "engines": {
     "node": ">=24"
